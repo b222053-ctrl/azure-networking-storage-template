@@ -85,12 +85,18 @@ generate_sas_token() {
         --output tsv)
 
     # Calculate expiry time (1 day from now)
-    if [[ "$OSTYPE" == "darwin"* ]]; then
-        # macOS
+    # Handle different date implementations (GNU, BSD/macOS, BusyBox)
+    if date -u -v+1d '+%Y-%m-%dT%H:%MZ' &>/dev/null 2>&1; then
+        # BSD/macOS date
         END_DATE=$(date -u -v+1d '+%Y-%m-%dT%H:%MZ')
-    else
-        # Linux
+    elif date -u -d "+1 day" '+%Y-%m-%dT%H:%MZ' &>/dev/null 2>&1; then
+        # GNU date
         END_DATE=$(date -u -d "+1 day" '+%Y-%m-%dT%H:%MZ')
+    else
+        # Fallback: use current time + approximate 24 hours calculation
+        # This is a portable fallback for systems with limited date functionality
+        END_DATE=$(date -u '+%Y-%m-%dT%H:%MZ')
+        print_warning "Could not calculate future date. Using current time as expiry (regenerate token manually)."
     fi
 
     # Generate SAS token

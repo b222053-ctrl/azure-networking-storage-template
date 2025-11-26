@@ -74,7 +74,16 @@
     }
   },
   "variables": {
-    "nsgName": "[concat('nsg-', parameters('webSubnetName'))]"
+    "nsgName": "[concat('nsg-', parameters('webSubnetName'))]",
+    "storageServiceEndpoint": [
+      {
+        "service": "Microsoft.Storage",
+        "locations": [
+          "[parameters('location')]"
+        ]
+      }
+    ],
+    "emptyArray": []
   },
   "resources": [
     {
@@ -122,7 +131,7 @@
             "name": "[parameters('databaseSubnetName')]",
             "properties": {
               "addressPrefix": "[parameters('databaseSubnetPrefix')]",
-              "serviceEndpoints": "[if(parameters('enableStorageServiceEndpoint'), createArray(createObject('service', 'Microsoft.Storage', 'locations', createArray(parameters('location')))), createArray())]",
+              "serviceEndpoints": "[if(parameters('enableStorageServiceEndpoint'), variables('storageServiceEndpoint'), variables('emptyArray'))]",
               "privateEndpointNetworkPolicies": "Disabled",
               "privateLinkServiceNetworkPolicies": "Enabled"
             }

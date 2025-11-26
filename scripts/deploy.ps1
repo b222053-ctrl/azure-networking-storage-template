@@ -49,7 +49,7 @@ $TemplateDir = Join-Path $ScriptDir "..\templates"
 
 # Generate unique storage account name if not provided
 if (-not $StorageAccountName) {
-    $RandomSuffix = Get-Random -Maximum 99999
+    $RandomSuffix = (Get-Random -Maximum 99999).ToString("D5")
     $StorageAccountName = "stsecureapp$RandomSuffix"
 }
 
