@@ -1,0 +1,82 @@
+# Azure Credentials and Secrets
+*.pfx
+*.cer
+*.pem
+*.key
+*.cred
+.azure/
+azureauth.json
+serviceprincipal.json
+
+# Local Configuration Files
+local.settings.json
+appsettings.local.json
+*.local.json
+.env
+.env.*
+
+# Azure CLI Output
+az-output.json
+deployment-output.json
+
+# ARM Template Outputs with Sensitive Data
+*-output.json
+*-deployment-result.json
+
+# Downloaded Files
+downloads/
+*.zip
+*.tar.gz
+
+# SAS Tokens and Connection Strings
+*-sas-token.txt
+*-connection-string.txt
+secrets.txt
+
+# Storage Explorer Data
+.azcopy/
+.azurestorageexplorer/
+
+# IDE and Editor Files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Log Files
+*.log
+logs/
+
+# Temporary Files
+tmp/
+temp/
+*.tmp
+*.bak
+
+# Node.js (if using any tooling)
+node_modules/
+npm-debug.log
+
+# Python (if using any tooling)
+__pycache__/
+*.pyc
+.pytest_cache/
+venv/
+.venv/
+
+# Build Artifacts
+dist/
+build/
+out/
+
+# Test Results
+test-results/
+coverage/
+
+# Terraform State (if using Terraform alongside ARM)
+*.tfstate
+*.tfstate.*
+.terraform/
