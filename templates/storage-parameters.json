@@ -1,0 +1,52 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "storageAccountName": {
+      "value": "stsecureapp0001"
+    },
+    "storageAccountSku": {
+      "value": "Standard_LRS"
+    },
+    "storageAccountKind": {
+      "value": "StorageV2"
+    },
+    "accessTier": {
+      "value": "Hot"
+    },
+    "enableHttpsTrafficOnly": {
+      "value": true
+    },
+    "minimumTlsVersion": {
+      "value": "TLS1_2"
+    },
+    "allowBlobPublicAccess": {
+      "value": false
+    },
+    "publicNetworkAccess": {
+      "value": "Disabled"
+    },
+    "defaultNetworkAction": {
+      "value": "Deny"
+    },
+    "virtualNetworkName": {
+      "value": "vnet-secure-app"
+    },
+    "subnetName": {
+      "value": "snet-database"
+    },
+    "createPrivateEndpoint": {
+      "value": true
+    },
+    "createPrivateDnsZone": {
+      "value": true
+    },
+    "tags": {
+      "value": {
+        "Environment": "Demo",
+        "Project": "AzureNetworkingStorage",
+        "DeployedBy": "ARMTemplate"
+      }
+    }
+  }
+}
